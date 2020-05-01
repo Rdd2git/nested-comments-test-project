@@ -1,0 +1,31 @@
+//add and reply comment style block
+.add-comment {
+  display: flex;
+  padding-top: 5px;
+  margin-left: 30px;
+  justify-content: space-between;
+  flex-direction: column;
+
+  div {
+    padding-top: 10px;
+  }
+
+  //background-color: black;
+
+  #textBody {
+    height: 80px;
+    width: 600px;
+  }
+
+  button {
+    background-color: blue;
+    color: white;
+    border-radius: 3px;
+    font-size: 1rem;
+
+    &:hover {
+      box-shadow: 0 0 10px blue;
+      cursor: pointer;
+    }
+  }
+}
