@@ -27,8 +27,6 @@ class AddComment extends Component {
     });
   };
   render() {
-    //console.log(this.props.commentReplyedId);
-    console.log(this.props.childLevel);
     return (
       <div>
         <div className="comment-block-tittle">Добавить комментарий</div>

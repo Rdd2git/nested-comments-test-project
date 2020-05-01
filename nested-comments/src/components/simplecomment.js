@@ -36,8 +36,6 @@ class SimpleComment extends Component {
     });
   };
   render() {
-    //console.log(this.props.addComment);
-
     const comment = this.props.data;
 
     const levelChanger = () => {
@@ -65,7 +63,6 @@ class SimpleComment extends Component {
         >
           <img src="http://placehold.it/60x80" alt="avtor" />
           <div className="commentHead">
-            {" "}
             <div className="avtor"> {comment.avtor} </div>
             <DateAgo time={comment.dateAdded} />
             <div className="likeCount">

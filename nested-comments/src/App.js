@@ -36,8 +36,6 @@ class App extends Component {
     comment.id = Math.random();
 
     function renderTree(obj, comment) {
-      console.log(obj);
-
       return obj.map((item) =>
         item.childComment.length > 0
           ? Object.assign({}, item, {
@@ -51,8 +49,6 @@ class App extends Component {
       );
     }
 
-    //console.log(state.id);
-    // console.log(renderTree(this.state.comments, comment));
     const array = [...this.state.comments];
     const comments = [...renderTree(array, comment)];
     this.setState({
@@ -69,7 +65,6 @@ class App extends Component {
     });
   };
   render() {
-    //console.log(this.state.comments);
     return (
       <div className="App">
         <div className="comments">

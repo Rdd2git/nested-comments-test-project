@@ -34,8 +34,7 @@ class ReplyComment extends Component {
   };
   render() {
     console.log(this.props.commentReplyedId);
-    //onsole.log(this.props.addComment);
-    // console.log()
+
     return (
       <div>
         <div className="comment-block-tittle">Добавить комментарий</div>
@@ -48,27 +47,24 @@ class ReplyComment extends Component {
           <div className="add-comment">
             <form onSubmit={this.handleSubmit}>
               <div className="avtor-card">
-                {" "}
                 <input
                   type="text"
                   id="avtor"
                   onChange={this.handleChange}
                   value={this.state.avtor}
                   required
-                />{" "}
+                />
               </div>
               <div className="mail-card">
-                {" "}
                 <input
                   type="email"
                   id="email"
                   onChange={this.handleChange}
                   value={this.state.email}
                   required
-                />{" "}
+                />
               </div>
               <div className="text-card">
-                {" "}
                 <textarea
                   placeholder="Введите ваш комментарий "
                   type="text"
@@ -78,8 +74,8 @@ class ReplyComment extends Component {
                   required
                 ></textarea>
               </div>
-              <button> Добавить комментарий </button>{" "}
-            </form>{" "}
+              <button> Добавить комментарий </button>
+            </form>
           </div>
         </div>
       </div>

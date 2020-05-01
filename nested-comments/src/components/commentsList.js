@@ -5,8 +5,7 @@ function CommentsList({ items, addComment }) {
   if (!items || !items.length) {
     return null;
   }
-  //console.log(addComment + "" + 22);
-
+  //рекурсивный обход для отображения древовидного комментария
   return items.map((item) => (
     <React.Fragment key={item.id}>
       <SimpleComment data={item} addComment={addComment} />
