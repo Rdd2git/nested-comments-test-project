@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.child1 {
+  padding-top: 10px;
+  padding-left: 60px;
+}
+
+.child2 {
+  padding-top: 10px;
+  padding-left: 120px;
+}
