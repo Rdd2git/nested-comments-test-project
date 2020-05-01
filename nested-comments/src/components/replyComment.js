@@ -1,52 +1,90 @@
 import React, { Component } from "react";
 
-class DateAgo extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      diffTime: null,
-    };
-  }
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 5000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  tick() {
+class ReplyComment extends Component {
+  state = {
+    avtor: "",
+    email: "",
+    textBody: "",
+    dateAdded: "",
+    commentReplyedId: 0,
+    childLevel: "parent",
+    childComment: [],
+  };
+  handleChange = (e) => {
+    let child = this.props.childLevel ? this.props.childLevel : "parent";
     this.setState({
-      diffTime: Date.now() - this.props.time,
+      [e.target.id]: e.target.value,
+      dateAdded: Date.now(),
+      likes: 0,
+      commentReplyedId: this.props.commentReplyedId,
+      childLevel: child,
     });
-  }
+  };
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.addComment(this.state);
+    if (this.props.replySubmit) {
+      return this.props.replySubmit(e);
+    }
+    this.setState({
+      avtor: "",
+      email: "",
+      textBody: "",
+    });
+  };
   render() {
-    //console.log(this.props);
-    //console.log(diffTimeCalculator);
-
-    const diffSeconds = Math.floor(this.state.diffTime / 1000);
-    const diffMinut = Math.floor(diffSeconds / 60);
-    const diffHours = Math.floor(diffMinut / 60);
-    const diffDays = Math.floor(diffHours / 24);
-
-    const diffTimeCalculator = () => {
-      if (diffSeconds < 10) {
-        return `a few seconds ago`;
-      } else if (diffSeconds < 60) {
-        return `${diffSeconds} seconds ago`;
-      } else if (diffMinut < 60) {
-        return `${diffMinut} minuts ago`;
-      } else if (diffHours < 24) {
-        return `${diffHours} hours ago`;
-      } else return `${diffDays} days ago`;
-    };
-    const CalculatedValue = diffTimeCalculator();
+    console.log(this.props.commentReplyedId);
+    //onsole.log(this.props.addComment);
+    // console.log()
     return (
       <div>
-        <p> {CalculatedValue} </p>
+        <div className="comment-block-tittle">Добавить комментарий</div>
+        <div className="comment-block reply">
+          <div className="labels">
+            <label htmlFor="avtor"> Имя </label>
+            <label htmlFor="email"> E - mail: </label>
+            <label htmlFor="textBody"> Текст комментария </label>
+          </div>
+          <div className="add-comment">
+            <form onSubmit={this.handleSubmit}>
+              <div className="avtor-card">
+                {" "}
+                <input
+                  type="text"
+                  id="avtor"
+                  onChange={this.handleChange}
+                  value={this.state.avtor}
+                  required
+                />{" "}
+              </div>
+              <div className="mail-card">
+                {" "}
+                <input
+                  type="email"
+                  id="email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  required
+                />{" "}
+              </div>
+              <div className="text-card">
+                {" "}
+                <textarea
+                  placeholder="Введите ваш комментарий "
+                  type="text"
+                  id="textBody"
+                  onChange={this.handleChange}
+                  value={this.state.textBody}
+                  required
+                ></textarea>
+              </div>
+              <button> Добавить комментарий </button>{" "}
+            </form>{" "}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default DateAgo;
+export default ReplyComment;
